@@ -45,9 +45,9 @@ const Navbar: React.FC = () => {
             </div>
           </div>
           <div className="hidden md:block">
-             <a href="#" className="bg-[#c4a648] text-gray-900 px-5 py-2.5 rounded-md text-sm font-semibold hover:bg-[#b5983f] transition-all duration-300 transform hover:scale-105 shadow">
+             <Link to="/daftar-afiliasi" className="bg-[#c4a648] text-gray-900 px-5 py-2.5 rounded-md text-sm font-semibold hover:bg-[#b5983f] transition-all duration-300 transform hover:scale-105 shadow">
                 Daftar Afiliasi
-            </a>
+            </Link>
           </div>
           <div className="-mr-2 flex md:hidden">
             <button
@@ -86,9 +86,9 @@ const Navbar: React.FC = () => {
                 {link.text}
               </NavLink>
             ))}
-             <a href="#" onClick={() => setIsOpen(false)} className="bg-[#c4a648] text-white block w-full text-center mt-2 px-4 py-2 rounded-md text-base font-medium hover:bg-[#b5983f] transition-all duration-300">
+             <Link to="/daftar-afiliasi" onClick={() => setIsOpen(false)} className="bg-[#c4a648] text-white block w-full text-center mt-2 px-4 py-2 rounded-md text-base font-medium hover:bg-[#b5983f] transition-all duration-300">
                 Daftar Afiliasi
-            </a>
+            </Link>
           </div>
         </div>
       )}

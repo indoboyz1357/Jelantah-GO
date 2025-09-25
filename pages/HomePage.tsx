@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -33,31 +32,37 @@ const HomePage: React.FC = () => {
       title: "Pengepul Minyak Jelantah: Panduan Lengkap untuk Rumah Tangga & UMKM",
       description: "Memahami peran pengepul dan bagaimana memilih partner yang tepat untuk menjual jelantah Anda secara aman dan menguntungkan.",
       imageUrl: "https://picsum.photos/seed/jelantah1/600/400",
+      link: "/blog/pengepul-minyak-jelantah-panduan-lengkap",
     },
     {
       title: "Jual Minyak Jelantah: Cara, Syarat, dan Tips Agar Untung Besar",
       description: "Dari persiapan hingga negosiasi harga, pelajari langkah-langkah praktis untuk memaksimalkan keuntungan dari penjualan jelantah Anda.",
       imageUrl: "https://picsum.photos/seed/jelantah2/600/400",
+      link: "/blog/jual-minyak-jelantah-tips-untung",
     },
     {
       title: "Harga Minyak Jelantah 2025: Update Terbaru per Liter",
       description: "Analisis tren harga jelantah terkini dan faktor-faktor yang mempengaruhinya agar Anda selalu mendapatkan penawaran terbaik.",
       imageUrl: "https://picsum.photos/seed/jelantah3/600/400",
+      link: "/blog/harga-minyak-jelantah-2025",
     },
     {
       title: "Bisnis Minyak Jelantah: Peluang, Tantangan, dan Cara Memulai",
       description: "Tertarik memulai bisnis pengumpulan jelantah? Simak panduan lengkap mengenai model bisnis, perizinan, dan strategi suksesnya.",
       imageUrl: "https://picsum.photos/seed/jelantah4/600/400",
+      link: "/blog/bisnis-minyak-jelantah-cara-memulai",
     },
     {
       title: "Manfaat Menjual Minyak Jelantah: Ekonomi, Lingkungan, dan Sosial",
       description: "Lebih dari sekadar uang, temukan dampak positif yang Anda ciptakan dengan menjual jelantah bagi lingkungan, masyarakat, dan ekonomi.",
       imageUrl: "https://picsum.photos/seed/jelantah5/600/400",
+      link: "/blog/manfaat-menjual-minyak-jelantah",
     },
     {
       title: "Sistem Penjemputan Minyak Jelantah: Mudah, Cepat, dan Transparan",
       description: "Bagaimana teknologi merevolusi proses penjemputan jelantah? Pelajari sistem modern yang kami tawarkan untuk kenyamanan Anda.",
       imageUrl: "https://picsum.photos/seed/jelantah6/600/400",
+      link: "/blog/sistem-penjemputan-minyak-jelantah",
     },
   ];
 
@@ -69,8 +74,34 @@ const HomePage: React.FC = () => {
     }
   };
 
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "url": "https://jelantahgo.example.com/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://jelantahgo.example.com/#/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqData.map(faq => ({
+      "@type": "Question",
+      "name": faq.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.a
+      }
+    }))
+  };
+
   return (
     <div className="bg-[#F9F6EE]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       {/* Hero Section */}
       <section className="bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 md:pt-32 md:pb-24">
@@ -421,7 +452,7 @@ const HomePage: React.FC = () => {
                   </div>
                   <div className="mt-6">
                     <Link
-                      to="/blog"
+                      to={post.link}
                       className="text-base font-semibold text-[#c4a648] hover:text-[#a18836] transition-colors"
                     >
                       Baca Selengkapnya &rarr;

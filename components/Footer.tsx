@@ -3,11 +3,23 @@ import { Link } from 'react-router-dom';
 import { BrandIcon } from './icons/LeafIcon';
 
 const Footer: React.FC = () => {
+    const serviceAreas = [
+        { name: "Jakarta Pusat", link: "/layanan/jakarta-pusat" },
+        { name: "Jakarta Barat", link: "/layanan/jakarta-barat" },
+        { name: "Jakarta Selatan", link: "/layanan/jakarta-selatan" },
+        { name: "Jakarta Timur", link: "/layanan/jakarta-timur" },
+        { name: "Jakarta Utara", link: "/layanan/jakarta-utara" },
+        { name: "Bogor", link: "/layanan/bogor" },
+        { name: "Depok", link: "/layanan/depok" },
+        { name: "Tangerang", link: "/layanan/tangerang" },
+        { name: "Tangerang Selatan", link: "/layanan/tangerang-selatan" },
+        { name: "Bekasi", link: "/layanan/bekasi" },
+    ];
   return (
     <footer className="bg-white border-t border-gray-200">
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="col-span-2 md:col-span-1">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
+            <div className="col-span-2">
                 <div className="flex items-center gap-2">
                     <BrandIcon className="h-8 w-8 text-[#c4a648]" />
                     <span className="text-2xl font-bold text-gray-800 font-serif">Jelantah<span className="text-[#c4a648]">GO</span></span>
@@ -25,18 +37,26 @@ const Footer: React.FC = () => {
                     <li><Link to="/faq" className="text-base text-gray-500 hover:text-gray-900">FAQ</Link></li>
                 </ul>
             </div>
+             <div>
+                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">Area Layanan</h3>
+                <ul className="mt-4 space-y-4">
+                    {serviceAreas.slice(0, 4).map(area => (
+                         <li key={area.name}><Link to={area.link} className="text-base text-gray-500 hover:text-gray-900">{area.name}</Link></li>
+                    ))}
+                </ul>
+            </div>
             <div>
                 <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">Legal</h3>
                 <ul className="mt-4 space-y-4">
-                    <li><a href="#" className="text-base text-gray-500 hover:text-gray-900">Privacy Policy</a></li>
-                    <li><a href="#" className="text-base text-gray-500 hover:text-gray-900">Terms of Service</a></li>
+                    <li><Link to="/kebijakan-privasi" className="text-base text-gray-500 hover:text-gray-900">Kebijakan Privasi</Link></li>
+                    <li><Link to="/syarat-ketentuan" className="text-base text-gray-500 hover:text-gray-900">Syarat & Ketentuan</Link></li>
                 </ul>
             </div>
             <div>
                 <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">Kontak</h3>
                 <ul className="mt-4 space-y-4">
-                    <li><a href="#" className="text-base text-gray-500 hover:text-gray-900">support@jelantahgo.com</a></li>
-                    <li><a href="#" className="text-base text-gray-500 hover:text-gray-900">+62 123 4567 890</a></li>
+                    <li><a href="mailto:info.jelantahgo@gmail.com" className="text-base text-gray-500 hover:text-gray-900">info.jelantahgo@gmail.com</a></li>
+                    <li><a href="https://wa.me/6285183033995" target="_blank" rel="noopener noreferrer" className="text-base text-gray-500 hover:text-gray-900">0851-8303-3995</a></li>
                 </ul>
             </div>
         </div>
